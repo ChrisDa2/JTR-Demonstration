@@ -48,7 +48,7 @@ john --wordlist=/usr/share/wordlists/rockyou.txt --format=raw-md5 hashes.txt
 
 ---
 
-## Demonstration 3: Brute force (incremental) – digits only
+## Demonstration 3: Brute force digits only
 
 ```bash
 printf "12345" | md5sum | cut -d' ' -f1 > hash_numeric.txt
@@ -57,7 +57,7 @@ john --incremental=Digits --format=raw-md5 hash_numeric.txt
 
 ---
 
-## Demonstration 4: Mask attack (predefined pattern)
+## Demonstration 4: Mask attack
 
 ```bash
 printf "abc123" | md5sum | cut -d' ' -f1 > hash_mask1.txt
@@ -69,7 +69,7 @@ john --mask='?l?l?l?l?d?d?d?d' --format=raw-md5 hash_mask2.txt
 
 ---
 
-## Demonstration 5: Crack user pasword from txt file
+## Demonstration 5: Crack user password from txt file
 ```bash
 echo 'admin:482c811da5d5b4bc6d497ffa98491e38' > hash_md5.txt
 cat hash_md5.txt

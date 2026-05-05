@@ -27,7 +27,7 @@ Create a working folder and a file with an example MD5 hash (the password is `pa
 ```bash
 mkdir -p ~/john_demo
 cd ~/john_demo
-echo '5f4dcc3b5aa765d61d8327deb882cf99' > hashes.txt
+printf "password" | md5sum | cut -d' ' -f1 > hashes.txt
 ```
 
 ---
@@ -51,7 +51,8 @@ john --wordlist=/usr/share/wordlists/rockyou.txt --format=raw-md5 hashes.txt
 ## Demonstration 3: Brute force (incremental) – digits only
 
 ```bash
-john --incremental=Digits --format=raw-md5 hashes.txt
+printf "12345" | md5sum | cut -d' ' -f1 > hash_numeric.txt
+john --incremental=Digits --format=raw-md5 hash_numeric.txt
 ```
 
 ---
@@ -59,7 +60,11 @@ john --incremental=Digits --format=raw-md5 hashes.txt
 ## Demonstration 4: Mask attack (predefined pattern)
 
 ```bash
-john --mask='?l?l?l?l?d?d?d?d' --format=raw-md5 hashes.txt
+printf "abc123" | md5sum | cut -d' ' -f1 > hash_mask1.txt
+john --mask='?l?l?l?d?d?d' --format=raw-md5 hash_mask1.txt
+
+printf "abcd1234" | md5sum | cut -d' ' -f1 > hash_mask2.txt
+john --mask='?l?l?l?l?d?d?d?d' --format=raw-md5 hash_mask2.txt
 ```
 
 ---
@@ -105,20 +110,9 @@ unzip -P secret123 zipfile.zip
 ```
 ---
 
-## 📄 Show obtained results
+## Remove Cache
 
 ```bash
-john --show hashes.txt
+rm ~/.john/john.pot
 ```
-
 ---
-
-## ⚠️ Ethical note
-
-These demonstrations are intended only for controlled environments (your own virtual machine or systems with explicit permission). Do not use John the Ripper against external systems without authorization.
-
-## 📚 References
-
-- [John the Ripper official site](https://www.openwall.com/john/)
-- [Rockyou wordlist](https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt)
-

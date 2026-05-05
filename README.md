@@ -96,7 +96,7 @@ john --wordlist=/usr/share/wordlists/rockyou.txt demo3_hashes_md5.txt
 john --show demo3_hashes_md5.txt
 ```
 
-## Demonstration 6: Crack a zip file
+## Demonstration 7: Crack a zip file
 ```bash
 nano zipfile.txt
 INFORME CONFIDENCIAL

@@ -99,8 +99,8 @@ john --show demo3_hashes_md5.txt
 ## Demonstration 7: Crack a zip file
 ```bash
 nano zipfile.txt
-INFORME CONFIDENCIAL
-Contraseña del ZIP: secret123
+CONFIDENTIAL FILE
+ZIP PASSWORD: secret123
 
 zip -P secret123 zipfile.zip zipfile.txt
 zip2john zipfile.zip > zipfile_hash.txt

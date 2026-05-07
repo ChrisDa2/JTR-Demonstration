@@ -36,6 +36,7 @@ printf "password" | md5sum | cut -d' ' -f1 > hashes.txt
 
 ```bash
 john hashes.txt
+john --format=raw-md5 hashes.txt
 ```
 
 ---
